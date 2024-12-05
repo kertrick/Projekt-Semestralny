@@ -20,4 +20,4 @@ urlpatterns = [
     path('logout', LogoutView.as_view(next_page='log'), name='logout'),  # Логаут
 ]
 
-    ]
+
