@@ -2,6 +2,8 @@
 {% load static %}
 {% block title %}Ту ду лист{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
+<link rel="stylesheet" href="{% static 'main/js/todolist.js' %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +11,13 @@
 </head>
 <body>
     <div class="todo-container">
-        <h1>to-do list</h1>
-<div class="todo-form">
-    <input id="taskInput" type="text">
-    <button id="addButton">Додати задачу</button>
-</div>
-
-<ul id="taskList" class="todo-list">
-</ul>
-
+        <h1>To-Do List</h1>
+        <form class="todo-form" id="todoForm">
+            <input type="text" id="todoInput" placeholder="Введіть задачу" required>
+            <button type="submit">Додати</button>
+        </form>
+        <ul class="todo-list" id="todoList"></ul>
     </div>
-    <link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
-    <script src="{% static 'main/js/todolist.js' %}"></script>
 </body>
 </html>
  {% endblock %}

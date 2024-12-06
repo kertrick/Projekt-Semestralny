@@ -14,13 +14,15 @@
     <link rel="stylesheet" href="{% static 'main/css/about.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <script defer src="{% static 'main/js/translation.js' %}"></script>
 </head>
 <body>
     <aside>
         <img src="{% static 'main/img/logo.png' %}" alt="Logo">
         <span class="logo">NewEra</span>
-        <h3>Навигация</h3>
+        <h3></h3>
         <ul>
+            <button id="theme-toggle" style="">змінити тему</button>
             <a href="{% url 'home' %}"><li><i class="fas fa-home"></i> Головна</li></a>
             <a href="{% url 'about' %}"><li><i class="fas fa-info"></i> Про нас</li></a>
             <a href="{% url 'finance' %}"><li><i class="fas fa-money-bill"></i> Фінансовий менеджер</li></a>
@@ -32,5 +34,6 @@
         {% block content %}
         {% endblock %}
     </main>
+<script src="{% static 'main/js/light.js' %}"></script>
 </body>
 </html>

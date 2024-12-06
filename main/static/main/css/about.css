@@ -5,3 +5,11 @@ main .about {
     text-align: center;
     width: 75%;
 }
+
+
+
+
+body.light-theme .about {
+    color: #000;
+}
+
