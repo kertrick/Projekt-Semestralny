@@ -16,7 +16,7 @@ function loadTasks() {
 
 // Функція для створення нового елемента завдання
 function createTaskElement(taskText) {
-    const li = document.createElement("li");
+    const li = document.createElement("li");// зхвлалпзхвлапзщпькзрпщпкрзщклрезк
 
     const span = document.createElement("span");
     span.textContent = taskText;
