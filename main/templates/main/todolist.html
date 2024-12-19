@@ -4,6 +4,7 @@
 {% block title %}Ту ду лист{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
     <div class="todo-container">
         <h1>to-do list</h1>
 
@@ -19,7 +20,7 @@
             </div>
         </form>
 
-        <!-- Список задач -->
+        <!-- Список задач 132-->
         <ul id="taskList" class="todo-list">
             {% for task in tasks %}
                 <li class="task-item">
@@ -40,3 +41,27 @@
         </ul>
     </div>
 {% endblock %}
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>to-do list</h1>
+<div class="todo-form">
+    <input id="taskInput" type="text">
+    <button id="addButton">Додати задачу</button>
+</div>
+
+<ul id="taskList" class="todo-list">
+</ul>
+
+    </div>
+    <link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
+    <script src="{% static 'main/js/todolist.js' %}"></script>
+</body>
+</html>
+ {% endblock %}
+>>>>>>> 6dcb7f8e0993c6963d10cdf32f37e38b5f8becc0
