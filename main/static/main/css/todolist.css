@@ -44,6 +44,7 @@ h1 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .todo-form button:hover {
@@ -61,18 +62,152 @@ h1 {
     border-radius: 4px;
     color: white;
     font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.todo-list li:hover {
+    background: #5a5a5a;
 }
 
 /* Кнопка видалення */
-.todo-list li button {
+.todo-list li button.delete-button {
     background: #dc3545;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     padding: 5px 10px;
+    transition: background 0.3s ease;
 }
 
-.todo-list li button:hover {
+.todo-list li button.delete-button:hover {
     background: #b02a37;
+}
+
+/* Кнопка редагування (олівець) */
+.todo-list li button.edit-button {
+    background: #f0ad4e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: background 0.3s ease;
+}
+
+.todo-list li button.edit-button:hover {
+    background: #e68a00;
+}
+
+/* Іконка олівця */
+.todo-list li button.edit-button i {
+    font-size: 18px; /* Розмір іконки */
+}
+
+/* Загальний контейнер для to-do list */
+.todo-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo-container h1 {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Форма для додавання задач */
+.todo-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.todo-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.todo-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Список задач */
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.task-item:hover {
+    background-color: #f1f1f1;
+}
+
+/* Текст задачі */
+.task-text {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #f9f9f9;
+}
+
+/* Виконані задачі */
+.task-item input[type="checkbox"]:checked + .task-text {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+/* Кнопка видалення */
+.task-item form button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.task-item form button:hover {
+    background-color: #a71d2a;
+}
+
+/* Кнопка для оновлення стану */
+.task-item form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }

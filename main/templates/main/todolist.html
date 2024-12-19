@@ -1,26 +1,42 @@
 {% extends 'main/layout.html' %}
-{% load static %}
+{% load static %} <!-- Завантаження static тут -->
+
 {% block title %}Ту ду лист{% endblock %}
+
 {% block content %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-</head>
-<body>
     <div class="todo-container">
         <h1>to-do list</h1>
-<div class="todo-form">
-    <input id="taskInput" type="text">
-    <button id="addButton">Додати задачу</button>
-</div>
 
-<ul id="taskList" class="todo-list">
-</ul>
+        <!-- Підключення CSS -->
+        <link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
 
+        <!-- Форма для додавання задач -->
+        <form method="POST" action="{% url 'task-create' %}">
+            {% csrf_token %}
+            <div class="todo-form">
+                <input id="taskInput" name="text" type="text" placeholder="Введіть задачу" required>
+                <button type="submit" class="btn btn-primary">Додати задачу</button>
+            </div>
+        </form>
+
+        <!-- Список задач -->
+        <ul id="taskList" class="todo-list">
+            {% for task in tasks %}
+                <li class="task-item">
+                    <form method="POST" action="{% url 'task-update' task.id %}" class="d-flex align-items-center">
+                        {% csrf_token %}
+                        <input type="checkbox" 
+                               name="is_completed" 
+                               {% if task.is_completed %}checked{% endif %} 
+                               onchange="this.form.submit()">
+                        <span class="task-text ms-2">{{ task.text }}</span>
+                    </form>
+                    <form method="POST" action="{% url 'task-delete' task.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger">Видалити</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
-    <link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
-    <script src="{% static 'main/js/todolist.js' %}"></script>
-</body>
-</html>
- {% endblock %}
+{% endblock %}
