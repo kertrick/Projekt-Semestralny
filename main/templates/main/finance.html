@@ -1,36 +1,33 @@
-{% extends 'main/layout.html' %}
-
-{% block title %}Финансы{% endblock %}
-
-{% block content %}
+{% extends 'main/layout.html' %} {% block title %}Финансы{% endblock %} {% block content %}
 <div class="skills">
     <as>
-       <h1>Фінансовий менеджер</h1>
-    <h2>Додати транзакцію</h2>
-    <label>Сума: <input type="number" id="amount"></label><br>
-    <label>Категорія:
-        <select id="category">
-            <option>Зарплата</option>
-            <option>Подарунок</option>
-            <option>Продукти</option>
-            <option>Транспорт</option>
-            <option>Розваги</option>
-            <option>Інше</option>
-        </select>
-    </label><br>
-    <label>Тип транзакції:
-        <select id="trans_type">
-            <option>Доходи</option>
-            <option>Витрати</option>
-        </select>
-    </label><br>
-    <button onclick="addTransaction()">Додати транзакцію</button>
-    <h2>Таблиця транзакцій</h2>
-        <table id="transactions_table">
-        </table>
-    <h2>Підсумок</h2>
-    <button onclick="showSummary()">Показати підсумок</button>
-    <div id="summary"></div>
+        <h1>Фінансовий менеджер</h1>
+        <h2>Додати транзакцію</h2>
+        <label>Сума: <input type="number" id="amount" /></label><br />
+        <label
+            >Категорія:
+            <select id="category">
+                <option>Зарплата</option>
+                <option>Подарунок</option>
+                <option>Продукти</option>
+                <option>Транспорт</option>
+                <option>Розваги</option>
+                <option>Інше</option>
+            </select> </label
+        ><br />
+        <label
+            >Тип транзакції:
+            <select id="trans_type">
+                <option>Доходи</option>
+                <option>Витрати</option>
+            </select> </label
+        ><br />
+        <button onclick="addTransaction()">Додати транзакцію</button>
+        <h2>Таблиця транзакцій</h2>
+        <table id="transactions_table"></table>
+        <h2>Підсумок</h2>
+        <button onclick="showSummary()">Показати підсумок</button>
+        <div id="summary"></div>
     </as>
 </div>
- {% endblock %}
+{% endblock %}

@@ -3,9 +3,17 @@ from . import views
 from django.shortcuts import redirect
 from django.contrib.auth.views import LoginView, LogoutView
 
+from .views import todolist, update_task, delete_task, edit_task
+
 urlpatterns = [
     # Перенаправление на страницу логина
     path('', lambda request: redirect('log', permanent=False)),
+
+    path('todolist/', todolist, name='todolist'),
+    path('todolist/task/create/', todolist, name='task-create'),
+    path('todolist/task/<int:task_id>/update/', update_task, name='task-update'),
+    path('todolist/task/<int:task_id>/delete/', delete_task, name='task-delete'),
+    path('todolist/task/<int:task_id>/edit/', edit_task, name='task-edit'),
 
     # Основные маршруты
     path('about', views.about, name='about'),
