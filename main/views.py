@@ -11,6 +11,7 @@ def todolist(request):
         Task.objects.create(text=request.POST['text'])
         return redirect('todolist')
 
+<<<<<<< HEAD
     # Отримання всіх задач
     tasks = Task.objects.all()
 
@@ -42,6 +43,17 @@ def update_task(request, task_id):
         # Оновлення статусу виконання (якщо передано)
         task.is_completed = 'is_completed' in request.POST
         
+=======
+    # Отримання всіх задач (для всіх користувачів)
+    tasks = Task.objects.all()
+    return render(request, 'main/todolist.html', {'tasks': tasks})
+
+def update_task(request, task_id):
+    # Оновлення статусу виконання задачі
+    if request.method == 'POST':
+        task = get_object_or_404(Task, id=task_id)
+        task.is_completed = 'is_completed' in request.POST
+>>>>>>> 71f28242a3e64de8de71ed052a7680206b371b00
         task.save()
         return redirect('todolist')
 
@@ -51,6 +63,7 @@ def delete_task(request, task_id):
         task = get_object_or_404(Task, id=task_id)
         task.delete()
         return redirect('todolist')
+<<<<<<< HEAD
     
 
 def edit_task(request, task_id):
@@ -70,6 +83,8 @@ def edit_task(request, task_id):
         'task_to_edit': task  # Передаємо завдання, яке редагується
     })
 
+=======
+>>>>>>> 71f28242a3e64de8de71ed052a7680206b371b00
 
 # Функции для рендеринга статичных страниц
 def home(request):
@@ -78,6 +93,12 @@ def home(request):
 def about(request):
     return render(request, 'main/about.html')
 
+<<<<<<< HEAD
+=======
+# def todolist(request):
+#     return render(request, 'main/todolist.html')
+
+>>>>>>> 71f28242a3e64de8de71ed052a7680206b371b00
 def finance(request):
     return render(request, 'main/finance.html')
 

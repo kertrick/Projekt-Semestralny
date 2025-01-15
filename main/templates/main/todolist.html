@@ -4,7 +4,54 @@
 {% block title %}Ту ду лист{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
     <link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
+=======
+<<<<<<< HEAD
+    <div class="todo-container">
+        <h1>to-do list</h1>
+
+        <!-- Підключення CSS -->
+        <link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
+
+        <!-- Форма для додавання задач -->
+        <form method="POST" action="{% url 'task-create' %}">
+            {% csrf_token %}
+            <div class="todo-form">
+                <input id="taskInput" name="text" type="text" placeholder="Введіть задачу" required>
+                <button type="submit" class="btn btn-primary">Додати задачу</button>
+            </div>
+        </form>
+
+        <!-- Список задач 132-->
+        <ul id="taskList" class="todo-list">
+            {% for task in tasks %}
+                <li class="task-item">
+                    <form method="POST" action="{% url 'task-update' task.id %}" class="d-flex align-items-center">
+                        {% csrf_token %}
+                        <input type="checkbox" 
+                               name="is_completed" 
+                               {% if task.is_completed %}checked{% endif %} 
+                               onchange="this.form.submit()">
+                        <span class="task-text ms-2">{{ task.text }}</span>
+                    </form>
+                    <form method="POST" action="{% url 'task-delete' task.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger">Видалити</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+>>>>>>> 71f28242a3e64de8de71ed052a7680206b371b00
     <div class="todo-container">
         <h1>to-do list</h1>
 
@@ -78,5 +125,14 @@
 
 
     </div>
+<<<<<<< HEAD
 
     {% endblock %}
+=======
+    <link rel="stylesheet" href="{% static 'main/css/todolist.css' %}">
+    <script src="{% static 'main/js/todolist.js' %}"></script>
+</body>
+</html>
+ {% endblock %}
+>>>>>>> 6dcb7f8e0993c6963d10cdf32f37e38b5f8becc0
+>>>>>>> 71f28242a3e64de8de71ed052a7680206b371b00
