@@ -1,28 +1,36 @@
 {% load static %}
-{% block title %}{% endblock %}
-<link rel="icon" href="{% static 'main/favicon.ico' %}" />
-<link rel="stylesheet" href="{% static 'main/css/log.css' %}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Вхід</title>
-  <link rel="stylesheet" href="{% static 'main/css/log.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід</title> 
+    <link rel="stylesheet" href="{% static 'main/css/log.css' %}">
 </head>
 <body>
     <div class="log">
-      <form action="">
-        <h1>Увійти</h1>
-        <div class="input-box">
-          <input type="text" placeholder="Логін" required>
+        <form method="post" action="{% url 'log' %}">
+            {% csrf_token %}
+            <h1>Увійти</h1>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            
+            <div class="input-box">
+                <label for="username">Логін:</label>
+                <input type="text" name="username" id="username" placeholder="Логін" required>
+            </div>
+            <div class="input-box">
+                <label for="password">Пароль:</label>
+                <input type="password" name="password" id="password" placeholder="Пароль" required>
+            </div>
+            <button type="submit" class="btn">Увійти</button>
+            
+        </form>
+        <div class="register">
+            Немає аккаунта? <a href="{% url 'reg' %}">Хочеш зареєструватися?</a>
         </div>
-        <div class="input-box">
-          <input type="password" placeholder="Пароль" required>
-        </div>
-        <div class="remember-forgot">
-          <label><input type="checkbox">Запам'ятати мене</label>
-          <a href="a">Забули пароль?</a>
-        </div>
-        <button type="submit" class="btn">Войти</button>
-        <div class="register-link">
-          <p>У вас немає аккаунту?<a href="reg">Реєстрація</a></p>
-        </div>
-      </form>
+    </div>
 </body>
+</html>

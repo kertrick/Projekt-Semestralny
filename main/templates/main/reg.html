@@ -1,25 +1,49 @@
 {% load static %}
-{% block title %}{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Реєстрація</title>
-  <link rel="stylesheet" href="{% static 'main/css/reg.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="{% static 'main/css/reg.css' %}">
 </head>
 <body>
     <div class="reg">
-      <form action="">
-        <h1>Реєстрація</h1>
-        <div class="input-box">
-          <input type="text" placeholder="Логін" required>
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Пароль" required>
-        </div>
-          <div class="input-box">
-          <input type="password" placeholder="Пароль ще раз" required>
-        </div>
-        <button type="submit" class="btn">Зареєструватися</button>
-        <div class="register-link">
-          <p>У вас вже є аккаунт?<a href="log">Залогуватися</a></p>
-        </div>
-      </form>
+        <form method="post" action="{% url 'reg' %}">
+            {% csrf_token %}
+            <h1>Реєстрація</h1>
+            
+            {% if form.errors %}
+                <ul class="errors">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            
+            <div class="input-box">
+                <label for="username">Логін:</label>
+                <input type="text" name="username" id="username" placeholder="Введіть логін" required>
+            </div>
+            <div class="input-box">
+                <label for="email">Електронна пошта:</label>
+                <input type="email" name="email" id="email" placeholder="Введіть пошту" required>
+            </div>
+            <div class="input-box">
+                <label for="password1">Пароль:</label>
+                <input type="password" name="password1" id="password1" placeholder="Введіть пароль" required>
+            </div>
+            <div class="input-box">
+                <label for="password2">Підтвердження пароля:</label>
+                <input type="password" name="password2" id="password2" placeholder="Повторіть пароль" required>
+            </div>
+            <button type="submit" class="btn">Зареєструватися</button>
+            <div class="login-link">
+                Є аккаунт? <a href="{% url 'log' %}">Увійти</a>.
+            </div>
+        </form>
+    </div>
 </body>
+</html>

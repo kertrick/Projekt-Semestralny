@@ -1,33 +1,48 @@
-{% extends 'main/layout.html' %} {% block title %}Финансы{% endblock %} {% block content %}
-<div class="skills">
-    <as>
-        <h1>Фінансовий менеджер</h1>
-        <h2>Додати транзакцію</h2>
-        <label>Сума: <input type="number" id="amount" /></label><br />
-        <label
-            >Категорія:
-            <select id="category">
-                <option>Зарплата</option>
-                <option>Подарунок</option>
-                <option>Продукти</option>
-                <option>Транспорт</option>
-                <option>Розваги</option>
-                <option>Інше</option>
-            </select> </label
-        ><br />
-        <label
-            >Тип транзакції:
-            <select id="trans_type">
-                <option>Доходи</option>
-                <option>Витрати</option>
-            </select> </label
-        ><br />
-        <button onclick="addTransaction()">Додати транзакцію</button>
-        <h2>Таблиця транзакцій</h2>
-        <table id="transactions_table"></table>
-        <h2>Підсумок</h2>
-        <button onclick="showSummary()">Показати підсумок</button>
-        <div id="summary"></div>
-    </as>
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}Фінансовий менеджер{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/finance.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/categor.css' %}">
+
+<div class="app-container">
+    <!-- Main Screen -->
+    <header class="header">
+        <h1>Фінансовий трекер</h1>
+    </header>
+    <section class="balance-section">
+        <h2>Ваш баланс: <span id="total-balance">0</span> PLN</h2>
+    </section>
+    <section class="chart">
+        <div class="circle-chart">
+            <span id="circle-total">0 PLN</span>
+        </div>
+    </section>
+    <section class="details">
+        <div id="records" class="records">Деталізація расходів</div>
+    </section>
 </div>
+
+<!-- Sliding Panel -->
+<div id="sliding-panel" class="sliding-panel hidden">
+    <div class="header">
+        <button class="tab active" id="expenses-tab">ВИТРАТИ</button>
+        <button class="tab" id="income-tab">ДОХОДИ</button>
+    </div>
+    <div class="main">
+        <div class="input-group">
+            <input type="number" id="amount-input" placeholder="Введіть суму">
+        </div>
+        <div class="input-group">
+            <input type="text" id="category-input" placeholder="Введіть категорію">
+        </div>
+        <button id="add-button-panel" class="add-button-panel">Додати</button>
+    </div>
+</div>
+
+<!-- Floating Add Button -->
+<button id="toggle-button" class="add-button">+</button>
+
+    <script src="{% static 'main/js/swipe.js' %}"></script>
 {% endblock %}
